@@ -1,0 +1,57 @@
+:root {
+  --ink: #17324d;
+  --ink-soft: #52677d;
+  --surface: #f4f7fb;
+  --panel: #ffffff;
+  --border: #d9e2ec;
+  --accent: #1f5f8b;
+  --accent-strong: #154a6e;
+  --accent-soft: #e3eef7;
+  --danger: #b42318;
+  --radius: 10px;
+  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--surface);
+  line-height: 1.55;
+}
+
+a {
+  color: var(--accent);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.page {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem;
+}
+
+.status-message {
+  padding: 2rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
