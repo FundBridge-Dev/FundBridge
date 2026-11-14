@@ -4,7 +4,7 @@
 
 **Class:** [CS 5610 Web Development](<add class link>)
 
-**Live site:** [<Live on Render>](https://fundbridge-b9s0.onrender.com/)
+**Live site:** [Open FundBridge on Render](https://fundbridge-b9s0.onrender.com/)
 
 **Demo video:** <add video link>
 
