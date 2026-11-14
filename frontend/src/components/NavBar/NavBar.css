@@ -1,0 +1,59 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar__brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navbar__links a.active {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.navbar__account {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__user {
+  color: var(--ink-soft);
+}
+
+.navbar__button,
+a.navbar__button {
+  padding: 0.45rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navbar__button:hover {
+  background: var(--accent-strong);
+}
