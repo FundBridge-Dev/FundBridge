@@ -9,8 +9,13 @@ import {
 import {
   createOpportunityIndexes,
   deleteSyntheticOpportunities,
+  findSyntheticOpportunityIds,
   insertManyOpportunities,
 } from "../opportunitiesDB.js";
+import {
+  createSavedOpportunityIndexes,
+  deleteSavedForOpportunities,
+} from "../savedOpportunitiesDB.js";
 import {
   INDUSTRIES,
   OPPORTUNITY_TYPES,
@@ -131,8 +136,11 @@ async function seed() {
   await connectDB();
   await createUserIndexes();
   await createOpportunityIndexes();
+  await createSavedOpportunityIndexes();
 
   const owner = await ensureDemoUser();
+  const oldIds = await findSyntheticOpportunityIds();
+  await deleteSavedForOpportunities(oldIds);
   const removed = await deleteSyntheticOpportunities();
 
   const now = new Date();

@@ -22,6 +22,7 @@ import {
   parseDateInput,
   validateOpportunity,
 } from "../validation/validateOpportunity.js";
+import { deleteSavedForOpportunities } from "../db/savedOpportunitiesDB.js";
 
 const router = Router();
 const DEFAULT_LIMIT = 12;
@@ -131,6 +132,7 @@ router.delete("/:id", requireAuth, async (req, res) => {
   }
 
   await deleteOpportunity(req.params.id);
+  await deleteSavedForOpportunities([existing._id]);
   res.status(204).end();
 });
 
