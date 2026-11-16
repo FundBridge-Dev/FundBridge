@@ -9,6 +9,8 @@ import passport from "./auth/passport.js";
 import authRouter from "./routes/auth.js";
 import { createOpportunityIndexes } from "./db/opportunitiesDB.js";
 import opportunitiesRouter from "./routes/opportunities.js";
+import { createSavedOpportunityIndexes } from "./db/savedOpportunitiesDB.js";
+import savedOpportunitiesRouter from "./routes/savedOpportunities.js";
 
 const PORT = process.env.PORT || 3000;
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
@@ -21,6 +23,7 @@ if (!process.env.SESSION_SECRET) {
 await connectDB();
 await createUserIndexes();
 await createOpportunityIndexes();
+await createSavedOpportunityIndexes();
 
 const app = express();
 
@@ -48,6 +51,7 @@ app.use(passport.session());
 
 app.use("/api/auth", authRouter);
 app.use("/api/opportunities", opportunitiesRouter);
+app.use("/api/saved-opportunities", savedOpportunitiesRouter);
 
 app.use("/api", (req, res) => {
   res.status(404).json({ error: "Not found" });
