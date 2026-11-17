@@ -2,7 +2,7 @@
 
 **Authors:** Ankita Mandalam and Agilan Balaraman
 
-**Class:** [CS 5610 Web Development](<add class link>)
+**Class Link:** [CS 5610 Web Development](https://johnguerra.co/classes/webDevelopment_online_fall_2026/)
 
 **Live site:** [Open FundBridge on Render](https://fundbridge-b9s0.onrender.com/)
 
@@ -16,8 +16,14 @@ FundBridge helps startups, student organizations, and nonprofits find funding or
 
 ## Screenshot
 
-![FundBridge home page](design-docs/screenshots/homepage.png)
+Home Page:
+
+![FundBridge home page](design-docs/screenshots/Landing-page.png)
+
+Opportunity Board:
 ![FundBridge Opportunity Board](design-docs/screenshots/opportunity-page.png)
+
+Sponsorship Board:
 ![FundBridge Sponsorship Board](design-docs/screenshots/sponsorship-page.png)
 
 ## How to use
@@ -37,7 +43,7 @@ React with Hooks (Vite, React Router, PropTypes), Node.js, Express, MongoDB (nat
 3. Backend: `cd backend`, run `npm install`, copy `.env.example` to `.env`, and fill in `MONGO_URL`, `DB_NAME`, `SESSION_SECRET`, and `DEMO_PASSWORD`.
 4. Seed the database from `backend`:
    - `npm run seed:opportunities` adds 800 synthetic funding opportunities owned by the `demo_daniel` account.
-   - `npm run seed:sponsorships` adds the synthetic sponsorship requests.
+   - `npm run seed:sponsorships` adds 800 synthetic sponsorship requests.
 5. Frontend: `cd frontend` and run `npm install`.
 6. Start the backend with `npm run dev` in `backend`.
 7. Start the frontend with `npm run dev` in `frontend`.
