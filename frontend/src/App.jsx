@@ -9,6 +9,10 @@ import OpportunityBoard from "./components/OpportunityBoard/OpportunityBoard.jsx
 import OpportunityDetail from "./components/OpportunityDetail/OpportunityDetail.jsx";
 import OpportunityForm from "./components/OpportunityForm/OpportunityForm.jsx";
 import SavedOpportunities from "./components/SavedOpportunities/SavedOpportunities.jsx";
+import SavedRequests from "./components/SavedRequests/SavedRequests.jsx";
+import SponsorshipBoard from "./components/SponsorshipBoard/SponsorshipBoard.jsx";
+import SponsorshipDetail from "./components/SponsorshipDetail/SponsorshipDetail.jsx";
+import SponsorshipEditor from "./components/SponsorshipEditor/SponsorshipEditor.jsx";
 import { getCurrentUser, logout } from "./api/authAPI.js";
 
 export default function App() {
@@ -39,16 +43,19 @@ export default function App() {
       <main className="page">
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
+
           <Route
             path="/login"
             element={<AuthForm key="login" mode="login" onAuth={setUser} />}
           />
+
           <Route
             path="/register"
             element={
               <AuthForm key="register" mode="register" onAuth={setUser} />
             }
           />
+
           <Route
             path="/opportunities"
             element={<OpportunityBoard user={user} />}
@@ -81,6 +88,41 @@ export default function App() {
               </RequireAuth>
             }
           />
+
+          <Route path="/sponsorships" element={<SponsorshipBoard />} />
+
+          <Route
+            path="/sponsorships/:id"
+            element={<SponsorshipDetail currentUser={user} />}
+          />
+
+          <Route
+            path="/sponsorships/new"
+            element={
+              <RequireAuth user={user}>
+                <SponsorshipEditor />
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/sponsorships/:id/edit"
+            element={
+              <RequireAuth user={user}>
+                <SponsorshipEditor />
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/saved-requests"
+            element={
+              <RequireAuth user={user}>
+                <SavedRequests />
+              </RequireAuth>
+            }
+          />
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

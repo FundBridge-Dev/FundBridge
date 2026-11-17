@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "seed:opportunities": "node db/seed/seedOpportunities.js"
+    "seed:opportunities": "node db/seed/seedOpportunities.js",
+    "seed:sponsorships": "node --env-file=.env seed/seedSponsorshipRequests.js"
   },
   "engines": {
     "node": ">=20"

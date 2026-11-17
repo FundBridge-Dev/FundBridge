@@ -11,6 +11,9 @@ import { createOpportunityIndexes } from "./db/opportunitiesDB.js";
 import opportunitiesRouter from "./routes/opportunities.js";
 import { createSavedOpportunityIndexes } from "./db/savedOpportunitiesDB.js";
 import savedOpportunitiesRouter from "./routes/savedOpportunities.js";
+import { createSavedRequestIndexes } from "./db/savedRequestsDB.js";
+import { createSponsorshipRequestIndexes } from "./db/sponsorshipRequestsDB.js";
+import sponsorshipRequestsRouter from "./routes/sponsorshipRequests.js";
 
 const PORT = process.env.PORT || 3000;
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
@@ -24,6 +27,8 @@ await connectDB();
 await createUserIndexes();
 await createOpportunityIndexes();
 await createSavedOpportunityIndexes();
+await createSponsorshipRequestIndexes();
+await createSavedRequestIndexes();
 
 const app = express();
 
@@ -52,6 +57,7 @@ app.use(passport.session());
 app.use("/api/auth", authRouter);
 app.use("/api/opportunities", opportunitiesRouter);
 app.use("/api/saved-opportunities", savedOpportunitiesRouter);
+app.use("/api/sponsorship-requests", sponsorshipRequestsRouter);
 
 app.use("/api", (req, res) => {
   res.status(404).json({ error: "Not found" });

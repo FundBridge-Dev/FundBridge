@@ -28,3 +28,7 @@ export function putJSON(url, data) {
 export function deleteJSON(url) {
   return request(url, { method: "DELETE" });
 }
+
+export function patchJSON(url, data) {
+  return request(url, { method: "PATCH", body: JSON.stringify(data) });
+}
