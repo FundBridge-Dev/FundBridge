@@ -1,0 +1,64 @@
+.save-control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.save-control__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.save-control select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.save-control__save,
+.save-control__remove {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.save-control__save {
+  border: none;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.save-control__save:hover {
+  background: var(--accent-strong);
+}
+
+.save-control__remove {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.save-control__remove:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.save-control button:disabled,
+.save-control select:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.save-control__login {
+  font-weight: 600;
+}
+
+.save-control__error {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--danger);
+  font-weight: 600;
+}

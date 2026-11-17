@@ -1,0 +1,115 @@
+.opportunity-detail {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.opportunity-detail__back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.opportunity-detail__badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.opportunity-detail__demo {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.opportunity-detail__header h1 {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.opportunity-detail__org {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.opportunity-detail__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.opportunity-detail__facts dt {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.opportunity-detail__facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.opportunity-detail__section h2 {
+  font-size: 1.15rem;
+}
+
+.opportunity-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.opportunity-detail__apply,
+.opportunity-detail__edit {
+  padding: 0.6rem 1.1rem;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.opportunity-detail__apply:hover,
+.opportunity-detail__edit:hover {
+  background: var(--accent-strong);
+}
+
+.opportunity-detail__owner {
+  padding: 1.25rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.opportunity-detail__owner h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+.opportunity-detail__owner-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.opportunity-detail__delete {
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--danger);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.opportunity-detail__delete:hover:not(:disabled) {
+  background: #fdecea;
+}
+
+.opportunity-detail__error {
+  color: var(--danger);
+  font-weight: 600;
+}

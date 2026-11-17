@@ -1,0 +1,25 @@
+.opportunity-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.opportunity-pagination button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.opportunity-pagination button:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.opportunity-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

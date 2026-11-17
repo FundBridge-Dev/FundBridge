@@ -1,0 +1,78 @@
+.opportunity-board__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.opportunity-board__header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.opportunity-board__intro {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.opportunity-board__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.opportunity-board__actions p {
+  margin: 0;
+}
+
+.opportunity-board__button {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.opportunity-board__button:hover {
+  background: var(--accent-strong);
+}
+
+.opportunity-board__button--secondary {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.opportunity-board__button--secondary:hover {
+  background: var(--border);
+}
+
+.opportunity-board__count {
+  margin: 1rem 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.opportunity-board__error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.opportunity-board__empty {
+  padding: 2rem;
+  text-align: center;
+  background: var(--panel);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.opportunity-board__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

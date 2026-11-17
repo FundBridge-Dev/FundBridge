@@ -7,6 +7,10 @@ import { connectDB, getClient } from "./db/myMongoDB.js";
 import { createUserIndexes } from "./db/usersDB.js";
 import passport from "./auth/passport.js";
 import authRouter from "./routes/auth.js";
+import { createOpportunityIndexes } from "./db/opportunitiesDB.js";
+import opportunitiesRouter from "./routes/opportunities.js";
+import { createSavedOpportunityIndexes } from "./db/savedOpportunitiesDB.js";
+import savedOpportunitiesRouter from "./routes/savedOpportunities.js";
 import { createSavedRequestIndexes } from "./db/savedRequestsDB.js";
 import { createSponsorshipRequestIndexes } from "./db/sponsorshipRequestsDB.js";
 import sponsorshipRequestsRouter from "./routes/sponsorshipRequests.js";
@@ -21,6 +25,8 @@ if (!process.env.SESSION_SECRET) {
 
 await connectDB();
 await createUserIndexes();
+await createOpportunityIndexes();
+await createSavedOpportunityIndexes();
 await createSponsorshipRequestIndexes();
 await createSavedRequestIndexes();
 
@@ -49,6 +55,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api/auth", authRouter);
+app.use("/api/opportunities", opportunitiesRouter);
+app.use("/api/saved-opportunities", savedOpportunitiesRouter);
 app.use("/api/sponsorship-requests", sponsorshipRequestsRouter);
 
 app.use("/api", (req, res) => {
