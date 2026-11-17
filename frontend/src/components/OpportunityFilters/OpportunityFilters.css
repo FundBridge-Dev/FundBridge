@@ -1,0 +1,61 @@
+.opportunity-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.9rem 1rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.opportunity-filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.opportunity-filters__field--search {
+  grid-column: 1 / -1;
+}
+
+.opportunity-filters label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.opportunity-filters input,
+.opportunity-filters select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.opportunity-filters__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+
+.opportunity-filters__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-right: auto;
+}
+
+.opportunity-filters__reset {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.opportunity-filters__reset:hover {
+  background: var(--accent-soft);
+}
