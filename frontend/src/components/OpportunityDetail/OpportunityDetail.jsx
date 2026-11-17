@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import DeadlineBadge from "../DeadlineBadge/DeadlineBadge.jsx";
-import { getOpportunity } from "../../api/opportunitiesAPI.js";
+import {
+  deleteOpportunity,
+  getOpportunity,
+} from "../../api/opportunitiesAPI.js";
+import { userShape } from "../../propTypes/userShape.js";
 import {
   formatCurrency,
   formatDeadline,
 } from "../../utils/formatOpportunity.js";
 import "./OpportunityDetail.css";
 
-export default function OpportunityDetail() {
+export default function OpportunityDetail({ user = null }) {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [opportunity, setOpportunity] = useState(null);
   const [error, setError] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const userId = user?.id;
 
   useEffect(() => {
     let ignore = false;
@@ -25,7 +32,21 @@ export default function OpportunityDetail() {
     return () => {
       ignore = true;
     };
-  }, [id]);
+  }, [id, userId]);
+
+  async function handleDelete() {
+    if (!window.confirm("Delete this opportunity? This can’t be undone.")) {
+      return;
+    }
+    setDeleting(true);
+    try {
+      await deleteOpportunity(id);
+      navigate("/opportunities", { replace: true });
+    } catch (err) {
+      setError(err.message);
+      setDeleting(false);
+    }
+  }
 
   if (error && !opportunity) {
     return (
@@ -108,6 +129,37 @@ export default function OpportunityDetail() {
           Apply on the organization’s site
         </a>
       </div>
+
+      {opportunity.isMine && (
+        <section className="opportunity-detail__owner">
+          <h2>Manage your post</h2>
+          <div className="opportunity-detail__owner-actions">
+            <Link
+              className="opportunity-detail__edit"
+              to={`/opportunities/${opportunity._id}/edit`}
+            >
+              Edit
+            </Link>
+            <button
+              type="button"
+              className="opportunity-detail__delete"
+              onClick={handleDelete}
+              disabled={deleting}
+            >
+              {deleting ? "Deleting…" : "Delete"}
+            </button>
+          </div>
+          {error && (
+            <p className="opportunity-detail__error" role="alert">
+              {error}
+            </p>
+          )}
+        </section>
+      )}
     </article>
   );
 }
+
+OpportunityDetail.propTypes = {
+  user: userShape,
+};
