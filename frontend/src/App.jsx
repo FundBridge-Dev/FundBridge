@@ -4,11 +4,12 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import AuthForm from "./components/AuthForm/AuthForm.jsx";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage.jsx";
-import { getCurrentUser, logout } from "./api/authAPI.js";
+import RequireAuth from "./components/RequireAuth/RequireAuth.jsx";
 import OpportunityBoard from "./components/OpportunityBoard/OpportunityBoard.jsx";
 import OpportunityDetail from "./components/OpportunityDetail/OpportunityDetail.jsx";
-import RequireAuth from "./components/RequireAuth/RequireAuth.jsx";
 import OpportunityForm from "./components/OpportunityForm/OpportunityForm.jsx";
+import SavedOpportunities from "./components/SavedOpportunities/SavedOpportunities.jsx";
+import { getCurrentUser, logout } from "./api/authAPI.js";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -53,16 +54,24 @@ export default function App() {
             element={<OpportunityBoard user={user} />}
           />
           <Route
-            path="/opportunities/:id"
-            element={<OpportunityDetail user={user} />}
-          />
-          <Route
             path="/opportunities/new"
             element={
               <RequireAuth user={user}>
                 <OpportunityForm key="create" mode="create" />
               </RequireAuth>
             }
+          />
+          <Route
+            path="/opportunities/saved"
+            element={
+              <RequireAuth user={user}>
+                <SavedOpportunities user={user} />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/opportunities/:id"
+            element={<OpportunityDetail user={user} />}
           />
           <Route
             path="/opportunities/:id/edit"

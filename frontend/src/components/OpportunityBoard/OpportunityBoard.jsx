@@ -84,9 +84,20 @@ export default function OpportunityBoard({ user = null }) {
         </div>
         <div className="opportunity-board__actions">
           {isLoggedIn ? (
-            <Link className="opportunity-board__button" to="/opportunities/new">
-              Post an opportunity
-            </Link>
+            <>
+              <Link
+                className="opportunity-board__button"
+                to="/opportunities/new"
+              >
+                Post an opportunity
+              </Link>
+              <Link
+                className="opportunity-board__button opportunity-board__button--secondary"
+                to="/opportunities/saved"
+              >
+                My saved opportunities
+              </Link>
+            </>
           ) : (
             <p>
               <Link to="/login" state={{ from: "/opportunities" }}>

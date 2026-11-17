@@ -40,6 +40,15 @@
   background: var(--accent-strong);
 }
 
+.opportunity-board__button--secondary {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.opportunity-board__button--secondary:hover {
+  background: var(--border);
+}
+
 .opportunity-board__count {
   margin: 1rem 0;
   font-weight: 600;
