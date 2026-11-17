@@ -16,7 +16,8 @@ FundBridge helps startups, student organizations, and nonprofits find funding or
 
 ## Screenshot
 
-![FundBridge home page](docs/screenshot.png)
+![FundBridge home page](docs/homepage.png)
+![FundBridge Opportunity Board](docs/opportunity-page.png)
 
 ## How to use
 
@@ -32,11 +33,14 @@ React with Hooks (Vite, React Router, PropTypes), Node.js, Express, MongoDB (nat
 
 1. Install Node.js 20 or later.
 2. Clone the repository.
-3. Backend: `cd backend`, run `npm install`, copy `.env.example` to `.env`, and fill in `MONGO_URL`, `DB_NAME`, and `SESSION_SECRET`.
-4. Frontend: `cd frontend` and run `npm install`.
-5. Start the backend with `npm run dev` in `backend`.
-6. Start the frontend with `npm run dev` in `frontend`.
-7. Open http://localhost:5173.
+3. Backend: `cd backend`, run `npm install`, copy `.env.example` to `.env`, and fill in `MONGO_URL`, `DB_NAME`, `SESSION_SECRET`, and `DEMO_PASSWORD`.
+4. Seed the database from `backend`:
+   - `npm run seed:opportunities` adds 800 synthetic funding opportunities owned by the `demo_daniel` account.
+   - `npm run seed:sponsorships` adds the synthetic sponsorship requests.
+5. Frontend: `cd frontend` and run `npm install`.
+6. Start the backend with `npm run dev` in `backend`.
+7. Start the frontend with `npm run dev` in `frontend`.
+8. Open http://localhost:5173.
 
 Production build: run `npm run build` in `frontend`, then `npm start` in `backend`, and open http://localhost:3000.
 
