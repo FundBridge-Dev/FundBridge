@@ -6,6 +6,7 @@ import AuthForm from "./components/AuthForm/AuthForm.jsx";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage.jsx";
 import { getCurrentUser, logout } from "./api/authAPI.js";
 import OpportunityBoard from "./components/OpportunityBoard/OpportunityBoard.jsx";
+import OpportunityDetail from "./components/OpportunityDetail/OpportunityDetail.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -49,6 +50,7 @@ export default function App() {
             path="/opportunities"
             element={<OpportunityBoard user={user} />}
           />
+          <Route path="/opportunities/:id" element={<OpportunityDetail />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
