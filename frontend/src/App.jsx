@@ -45,7 +45,10 @@ export default function App() {
               <AuthForm key="register" mode="register" onAuth={setUser} />
             }
           />
-          <Route path="/opportunities" element={<OpportunityBoard />} />
+          <Route
+            path="/opportunities"
+            element={<OpportunityBoard user={user} />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
