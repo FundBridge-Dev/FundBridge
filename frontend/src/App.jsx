@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage/HomePage.jsx";
 import AuthForm from "./components/AuthForm/AuthForm.jsx";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage.jsx";
 import { getCurrentUser, logout } from "./api/authAPI.js";
+import OpportunityBoard from "./components/OpportunityBoard/OpportunityBoard.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +45,7 @@ export default function App() {
               <AuthForm key="register" mode="register" onAuth={setUser} />
             }
           />
+          <Route path="/opportunities" element={<OpportunityBoard />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
