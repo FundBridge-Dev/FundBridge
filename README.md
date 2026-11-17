@@ -6,8 +6,6 @@
 
 **Live site:** [Open FundBridge on Render](https://fundbridge-b9s0.onrender.com/)
 
-**Demo video:** <add video link>
-
 **Design document:** [Design Document](design-docs/design-document.md)
 
 ## Project objective
