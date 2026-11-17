@@ -1,0 +1,83 @@
+.opportunity-form {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.opportunity-form form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.opportunity-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.opportunity-form__field--wide,
+.opportunity-form__error,
+.opportunity-form__actions {
+  grid-column: 1 / -1;
+}
+
+.opportunity-form__field--checkbox {
+  justify-content: flex-end;
+}
+
+.opportunity-form__field--checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.opportunity-form label {
+  font-weight: 600;
+}
+
+.opportunity-form input:not([type="checkbox"]),
+.opportunity-form select,
+.opportunity-form textarea {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
+
+.opportunity-form textarea {
+  resize: vertical;
+}
+
+.opportunity-form__error {
+  margin: 0;
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.opportunity-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.opportunity-form__actions button {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.opportunity-form__actions button:hover:not(:disabled) {
+  background: var(--accent-strong);
+}
+
+.opportunity-form__actions button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}

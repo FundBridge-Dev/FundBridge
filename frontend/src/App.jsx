@@ -7,6 +7,8 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage.jsx";
 import { getCurrentUser, logout } from "./api/authAPI.js";
 import OpportunityBoard from "./components/OpportunityBoard/OpportunityBoard.jsx";
 import OpportunityDetail from "./components/OpportunityDetail/OpportunityDetail.jsx";
+import RequireAuth from "./components/RequireAuth/RequireAuth.jsx";
+import OpportunityForm from "./components/OpportunityForm/OpportunityForm.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -50,7 +52,26 @@ export default function App() {
             path="/opportunities"
             element={<OpportunityBoard user={user} />}
           />
-          <Route path="/opportunities/:id" element={<OpportunityDetail />} />
+          <Route
+            path="/opportunities/:id"
+            element={<OpportunityDetail user={user} />}
+          />
+          <Route
+            path="/opportunities/new"
+            element={
+              <RequireAuth user={user}>
+                <OpportunityForm key="create" mode="create" />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/opportunities/:id/edit"
+            element={
+              <RequireAuth user={user}>
+                <OpportunityForm key="edit" mode="edit" />
+              </RequireAuth>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
