@@ -7,6 +7,9 @@ import { connectDB, getClient } from "./db/myMongoDB.js";
 import { createUserIndexes } from "./db/usersDB.js";
 import passport from "./auth/passport.js";
 import authRouter from "./routes/auth.js";
+import { createSavedRequestIndexes } from "./db/savedRequestsDB.js";
+import { createSponsorshipRequestIndexes } from "./db/sponsorshipRequestsDB.js";
+import sponsorshipRequestsRouter from "./routes/sponsorshipRequests.js";
 
 const PORT = process.env.PORT || 3000;
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
@@ -18,6 +21,8 @@ if (!process.env.SESSION_SECRET) {
 
 await connectDB();
 await createUserIndexes();
+await createSponsorshipRequestIndexes();
+await createSavedRequestIndexes();
 
 const app = express();
 
@@ -44,6 +49,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api/auth", authRouter);
+app.use("/api/sponsorship-requests", sponsorshipRequestsRouter);
 
 app.use("/api", (req, res) => {
   res.status(404).json({ error: "Not found" });

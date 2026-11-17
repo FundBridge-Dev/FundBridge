@@ -1,0 +1,120 @@
+.saved-requests {
+  max-width: 70rem;
+  margin: 2.5rem auto 4rem;
+}
+
+.saved-requests h1 {
+  margin-bottom: 2rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.saved-requests ul {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.saved-requests li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem) 10rem;
+  grid-template-areas:
+    "title meta label"
+    "select select remove";
+  gap: 0.8rem 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgb(29 68 105 / 7%);
+}
+
+.saved-requests li:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px rgb(29 68 105 / 12%);
+}
+
+.saved-requests h2 {
+  grid-area: title;
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.saved-requests h2 a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.saved-requests h2 a:hover {
+  text-decoration: underline;
+}
+
+.saved-requests p {
+  grid-area: meta;
+  margin: 0;
+  color: var(--ink-soft);
+  font-weight: 600;
+  text-align: right;
+}
+
+.saved-requests label {
+  grid-area: label;
+  color: var(--ink);
+  font-weight: 700;
+  text-align: left;
+}
+
+.saved-requests select {
+  grid-area: select;
+  width: 100%;
+  min-height: 3rem;
+  box-sizing: border-box;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.saved-requests button {
+  grid-area: remove;
+  width: 10rem;
+  min-height: 3rem;
+  box-sizing: border-box;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #b23b3b;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.saved-requests button:hover {
+  background: #922f2f;
+}
+
+@media (max-width: 750px) {
+  .saved-requests li {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "meta"
+      "label"
+      "select"
+      "remove";
+  }
+
+  .saved-requests p,
+  .saved-requests label {
+    text-align: left;
+  }
+
+  .saved-requests button {
+    width: 100%;
+  }
+}

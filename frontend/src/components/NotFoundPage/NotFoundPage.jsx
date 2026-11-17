@@ -10,3 +10,5 @@ export default function NotFoundPage() {
     </section>
   );
 }
+
+NotFoundPage.propTypes = {};
