@@ -1,13 +1,25 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import DeadlineBadge from "../DeadlineBadge/DeadlineBadge.jsx";
-import { opportunityShape } from "../../propTypes/opportunityShapes.js";
+import SaveOpportunityControl from "../SaveOpportunityControl/SaveOpportunityControl.jsx";
+import {
+  opportunityShape,
+  savedOpportunityShape,
+} from "../../propTypes/opportunityShapes.js";
 import {
   formatCurrency,
   formatDeadline,
 } from "../../utils/formatOpportunity.js";
 import "./OpportunityCard.css";
 
-export default function OpportunityCard({ opportunity }) {
+export default function OpportunityCard({
+  opportunity,
+  isLoggedIn,
+  savedItem = null,
+  onSave,
+  onChangeStatus,
+  onRemove,
+}) {
   return (
     <article className="opportunity-card">
       <div className="opportunity-card__badges">
@@ -50,10 +62,23 @@ export default function OpportunityCard({ opportunity }) {
           <dd>{opportunity.equityRequired ? "Required" : "None"}</dd>
         </div>
       </dl>
+
+      <SaveOpportunityControl
+        isLoggedIn={isLoggedIn}
+        savedItem={savedItem}
+        onSave={(status) => onSave(opportunity._id, status)}
+        onChangeStatus={(status) => onChangeStatus(savedItem._id, status)}
+        onRemove={() => onRemove(savedItem._id)}
+      />
     </article>
   );
 }
 
 OpportunityCard.propTypes = {
   opportunity: opportunityShape.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  savedItem: savedOpportunityShape,
+  onSave: PropTypes.func.isRequired,
+  onChangeStatus: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
 };

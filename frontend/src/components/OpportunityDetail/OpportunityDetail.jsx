@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import DeadlineBadge from "../DeadlineBadge/DeadlineBadge.jsx";
+import SaveOpportunityControl from "../SaveOpportunityControl/SaveOpportunityControl.jsx";
 import {
   deleteOpportunity,
   getOpportunity,
 } from "../../api/opportunitiesAPI.js";
+import { useSavedOpportunities } from "../../hooks/useSavedOpportunities.js";
 import { userShape } from "../../propTypes/userShape.js";
 import {
   formatCurrency,
@@ -18,6 +20,8 @@ export default function OpportunityDetail({ user = null }) {
   const [opportunity, setOpportunity] = useState(null);
   const [error, setError] = useState("");
   const [deleting, setDeleting] = useState(false);
+  const { savedByOpportunityId, save, changeStatus, remove } =
+    useSavedOpportunities(user);
   const userId = user?.id;
 
   useEffect(() => {
@@ -60,6 +64,8 @@ export default function OpportunityDetail({ user = null }) {
   if (!opportunity) {
     return <p className="status-message">Loading…</p>;
   }
+
+  const savedItem = savedByOpportunityId.get(opportunity._id) ?? null;
 
   return (
     <article className="opportunity-detail">
@@ -128,6 +134,13 @@ export default function OpportunityDetail({ user = null }) {
         >
           Apply on the organization’s site
         </a>
+        <SaveOpportunityControl
+          isLoggedIn={Boolean(user)}
+          savedItem={savedItem}
+          onSave={(status) => save(opportunity._id, status)}
+          onChangeStatus={(status) => changeStatus(savedItem._id, status)}
+          onRemove={() => remove(savedItem._id)}
+        />
       </div>
 
       {opportunity.isMine && (

@@ -4,6 +4,7 @@ import OpportunityCard from "../OpportunityCard/OpportunityCard.jsx";
 import OpportunityFilters from "../OpportunityFilters/OpportunityFilters.jsx";
 import OpportunityPagination from "../OpportunityPagination/OpportunityPagination.jsx";
 import { searchOpportunities } from "../../api/opportunitiesAPI.js";
+import { useSavedOpportunities } from "../../hooks/useSavedOpportunities.js";
 import { userShape } from "../../propTypes/userShape.js";
 import "./OpportunityBoard.css";
 
@@ -28,6 +29,8 @@ export default function OpportunityBoard({ user = null }) {
   const [result, setResult] = useState({ items: [], total: 0, pages: 1 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { savedByOpportunityId, save, changeStatus, remove } =
+    useSavedOpportunities(user);
 
   const isLoggedIn = Boolean(user);
   const mine = isLoggedIn && filters.mine;
@@ -123,7 +126,14 @@ export default function OpportunityBoard({ user = null }) {
       <ul className="opportunity-board__list">
         {result.items.map((opportunity) => (
           <li key={opportunity._id}>
-            <OpportunityCard opportunity={opportunity} />
+            <OpportunityCard
+              opportunity={opportunity}
+              isLoggedIn={isLoggedIn}
+              savedItem={savedByOpportunityId.get(opportunity._id) ?? null}
+              onSave={save}
+              onChangeStatus={changeStatus}
+              onRemove={remove}
+            />
           </li>
         ))}
       </ul>
