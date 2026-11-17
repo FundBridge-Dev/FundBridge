@@ -8,7 +8,7 @@
 
 **Demo video:** <add video link>
 
-**Design document:** <add link>
+**Design document:** [Design Document](design-docs/design-document.md)
 
 ## Project objective
 
@@ -16,8 +16,9 @@ FundBridge helps startups, student organizations, and nonprofits find funding or
 
 ## Screenshot
 
-![FundBridge home page](docs/homepage.png)
-![FundBridge Opportunity Board](docs/opportunity-page.png)
+![FundBridge home page](design-docs/screenshots/homepage.png)
+![FundBridge Opportunity Board](design-docs/screenshots/opportunity-page.png)
+![FundBridge Sponsorship Board](design-docs/screenshots/sponsorship-page.png)
 
 ## How to use
 
