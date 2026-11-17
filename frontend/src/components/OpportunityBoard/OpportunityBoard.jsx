@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import OpportunityCard from "../OpportunityCard/OpportunityCard.jsx";
 import OpportunityFilters from "../OpportunityFilters/OpportunityFilters.jsx";
 import OpportunityPagination from "../OpportunityPagination/OpportunityPagination.jsx";
@@ -77,6 +78,20 @@ export default function OpportunityBoard({ user = null }) {
             Grants, accelerators, fellowships, and pitch competitions for
             early-stage founders.
           </p>
+        </div>
+        <div className="opportunity-board__actions">
+          {isLoggedIn ? (
+            <Link className="opportunity-board__button" to="/opportunities/new">
+              Post an opportunity
+            </Link>
+          ) : (
+            <p>
+              <Link to="/login" state={{ from: "/opportunities" }}>
+                Log in
+              </Link>{" "}
+              to post or save opportunities.
+            </p>
+          )}
         </div>
       </div>
 
