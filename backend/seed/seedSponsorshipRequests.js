@@ -63,7 +63,12 @@ function buildRequest(index) {
 async function seed() {
   const db = await connectDB();
   const collection = db.collection("sponsorshipRequests");
-
+  // REVIEW: this recreates `seedKey_1` without the partialFilterExpression that
+  // createSponsorshipRequestIndexes() in db/sponsorshipRequestsDB.js sets, and that
+  // function already drops the plain version on startup. Seeding while the server is
+  // running throws IndexOptionsConflict, and if the plain unique index survives, the
+  // second user-created request fails with E11000 because they all have seedKey: null.
+  // Suggest deleting this line and calling createSponsorshipRequestIndexes() instead.
   await collection.createIndex({ seedKey: 1 }, { unique: true });
 
   const records = Array.from({ length: TOTAL_RECORDS }, (_, index) =>
